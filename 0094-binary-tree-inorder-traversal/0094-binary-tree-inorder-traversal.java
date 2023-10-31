@@ -17,18 +17,12 @@ class Solution {
     ArrayList<Integer> inorderValues = new ArrayList<>();
 
     public List<Integer> inorderTraversal(TreeNode root) {
-        internalTraversal(root);
+        if (root == null) return inorderValues;
+        
+        if (root.left != null) inorderTraversal(root.left);
+        inorderValues.add(root.val);
+        if (root.right != null) inorderTraversal(root.right);
 
         return inorderValues;
-    }
-
-    private void internalTraversal(TreeNode currentNode) {
-        if (currentNode == null) return;
-        
-        if (currentNode.left != null) internalTraversal(currentNode.left);
-
-        inorderValues.add(currentNode.val);
-
-        if (currentNode.right != null) internalTraversal(currentNode.right);
     }
 }
